@@ -1,0 +1,18 @@
+#!/usr/bin/python3
+
+import click
+import subprocess,time
+import requests
+from rich import print
+from rich.panel import Panel
+
+@click.command()
+@click.option("-d",prompt="domain",help="try ./domains -d <name domain>")
+time.sleep(1)
+def Dex(d):
+    url = f"https://api.hackertarget.com/hostsearch/?q={d}"
+    req = requests.get(url)
+    print(Panel(req.text,border_style='gray23 bold',highlight=True,title=' INFO '))
+
+if __name__ == "__main__":
+    Dex()
